@@ -1,0 +1,8 @@
+¬ход в админ панель:
+Ћогин: sergeykapica,
+пароль: sergeykapica777
+
+страницы:
+/,
+/search-country/,
+/standart-calculator-type/
