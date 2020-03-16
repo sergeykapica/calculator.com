@@ -55,7 +55,17 @@ if( isset( $_GET[ 'type' ] ) )
 				}
 				else
 				{
-					$wpdb->query( 'ROLLBACK' );
+					$delivery_types_params = $wpdb->query( $wpdb->prepare( 'INSERT INTO mps_delivery_types_params ( delivery_type_id, param_slug, param_value ) '
+												. 'VALUES ( ( SELECT id FROM mps_delivery_types WHERE delivery_type = %s ), %s, %s )', $type, $type_param_key, $type_param_value ) );
+					if( $delivery_types_params )
+					{
+						$wpdb->query( 'COMMIT' );
+						$data_action_status = true;
+					}
+					else
+					{
+						$wpdb->query( 'ROLLBACK' );
+					}
 				}
 			}
 		}

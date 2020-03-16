@@ -18,9 +18,9 @@ function plugin_activation()
 	$deliveryTypesTableQuery = 
 		"CREATE TABLE IF NOT EXISTS mps_delivery_types(
 			id INT(10) AUTO_INCREMENT PRIMARY KEY,
-			type VARCHAR(255) NOT NULL,
+			delivery_type VARCHAR(255) NOT NULL,
 			type_description VARCHAR(5000) NOT NULL
-		) ENGINE = INNODB;";
+		) ENGINE = INNODB CHARACTER SET utf8 COLLATE utf8_bin;";
 
 	$deliveryTypesParamsTableQuery = 
 		"CREATE TABLE IF NOT EXISTS mps_delivery_types_params(
@@ -28,7 +28,7 @@ function plugin_activation()
 			delivery_type_id INT(10) NOT NULL,
 			param_slug VARCHAR(255) NOT NULL,
 			param_value TEXT(10000) NOT NULL
-		) ENGINE = INNODB;";
+		) ENGINE = INNODB CHARACTER SET utf8 COLLATE utf8_bin;";
 
 	$wpdb->query( 'START TRANSACTION' );
 	
